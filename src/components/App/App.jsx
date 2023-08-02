@@ -1,4 +1,4 @@
-import { lazy } from "react";
+// import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../GlobalStyle";
