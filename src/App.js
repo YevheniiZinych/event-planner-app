@@ -7,16 +7,16 @@ import HomePage from "./pages/HomePage/HomePage";
 import { Container } from "./App.styled";
 function App() {
   return (
-    <Container>
-      <GlobalStyle />
-      <ThemeProvider theme={mainTheme}>
+    <ThemeProvider theme={mainTheme}>
+      <Container>
+        <GlobalStyle />
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<HomePage />} />
           </Route>
         </Routes>
-      </ThemeProvider>
-    </Container>
+      </Container>
+    </ThemeProvider>
   );
 }
 
