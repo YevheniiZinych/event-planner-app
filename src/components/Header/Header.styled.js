@@ -9,6 +9,8 @@ export const HeaderBox = styled.header`
   height: 168px;
   background-color: #fefcff;
 
+  z-index: 1;
+
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
     height: 92px;
   }
@@ -69,6 +71,7 @@ export const ListLng = styled.ul`
   height: 75px;
   padding: 16px 12px;
   border-radius: 10px;
+  background-color: #fff;
   box-shadow: 2px 4px 9px 0px #a68dae47;
 
   z-index: 2;

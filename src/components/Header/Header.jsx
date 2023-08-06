@@ -22,12 +22,9 @@ export const Header = () => {
   };
 
   const handleClick = (e) => {
-    setIsOpen(true);
     const selectedLng = e.target.dataset.id;
-    if (selectedLng) {
-      setLanguage(selectedLng);
-      setIsOpen(false);
-    }
+    setLanguage(selectedLng);
+    setIsOpen(true);
   };
 
   useEffect(() => {
@@ -45,7 +42,7 @@ export const Header = () => {
     <HeaderBox>
       <Wrapper>
         <Title>Event Planner</Title>
-        <SelectStyle onClick={handleClick} ref={menuRef}>
+        <SelectStyle onClick={() => setIsOpen((prev) => !prev)} ref={menuRef}>
           {language}
           <ListLng open={isOpen} onClick={handleClick}>
             <li data-id="UK">UK</li>
