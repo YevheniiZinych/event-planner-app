@@ -2,24 +2,26 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
+  /* width: 100%; */
 `;
 
 export const SelectBtn = styled.button`
+  position: ${({ open }) => (open ? "absolute" : "none")};
+
   display: flex;
   align-items: center;
+  left: -70px;
 
-  width: ${({ open, selectedCategory }) =>
-    open || selectedCategory !== "Category" ? "158px" : "56px"};
+  /* transform: ${({ open }) => open && "translateX(-50%)"}; */
+  width: ${({ open }) => (open ? "158px" : "56px")};
   height: 56px;
-
+  z-index: 1;
   padding: 16px;
-  margin-bottom: 40px;
 
   box-shadow: 2px 4px 9px 0px #a68dae47;
   border: none;
   border-radius: 8px;
   background-color: #fff;
-
   transition: ${({ theme }) => theme.transitions.main};
 
   cursor: pointer;
@@ -61,27 +63,29 @@ export const SelectBtn = styled.button`
 
 export const SelectList = styled.ul`
   position: absolute;
+  top: 60px;
+  left: 0;
 
-  display: ${({ isSelected }) => (isSelected ? "block" : "none")};
-  bottom: -205px;
+  display: ${({ open, selectedCategory }) => (open ? "block" : "none")};
 
   width: 100%;
-  /* min-height: ${({ open }) => (open ? "239px" : "0")}; */
 
   background-color: #fff;
   box-shadow: 0px 4px 10px 0px #00000040;
   border-radius: 8px;
 
   vertical-align: top;
-
+  animation-name: "anim";
   transition: ${({ theme }) => theme.transitions.main};
 
-  z-index: 1;
+  z-index: 100;
 
   li {
-    border-bottom: 1px solid ${({ theme }) => theme.color.selectMainColor};
+    &:not(:last-child) {
+      border-bottom: 1px solid ${({ theme }) => theme.color.selectMainColor};
+    }
 
-    padding: 9px 0 8px 24px;
+    padding: 9px 0 8px 0px;
 
     color: ${({ theme }) => theme.color.selectMainColor};
 
@@ -94,18 +98,18 @@ export const SelectList = styled.ul`
   }
 `;
 
-export const CategoryWrap = styled.div``;
-
 export const ClearBtn = styled.span`
   position: absolute;
   display: ${({ open }) => (open ? "flex" : "none")};
-  right: 0;
+  right: -80px;
   top: 19px;
   align-items: center;
 
   color: ${({ theme }) => theme.color.main};
 
   cursor: pointer;
+
+  z-index: 1;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
     color: ${({ isSelected }) => (isSelected ? "#7B61FF" : "#3f3f3f")};

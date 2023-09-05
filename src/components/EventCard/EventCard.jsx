@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router";
 import {
   ImgEvent,
   EventItem,
@@ -10,6 +12,7 @@ import {
 } from "./EventCard.styled";
 
 export const EventCard = ({ events }) => {
+  const location = useLocation();
   return (
     <>
       {events.length > 0 &&
@@ -46,7 +49,11 @@ export const EventCard = ({ events }) => {
                     <h3>{title}</h3>
                     <p>{description}</p>
                   </DescriptionWrap>
-                  <MoreBtn>More Inform</MoreBtn>
+                  <MoreBtn>
+                    <NavLink to="/details" state={{ from: location }}>
+                      More Inform
+                    </NavLink>
+                  </MoreBtn>
                 </Inner>
               </EventItem>
             );

@@ -146,12 +146,9 @@ export const getCategory = () => {
   return uniqueCategory;
 };
 
-export const getEventsByCategory = (category) => {
-  if (category === "Category") return;
+export const createEvent = (data) => {
+  console.log(data);
+  events.push(data);
 
-  return events.find((data) => data.category === category);
-};
-
-export const getEventsByPriority = (priority) => {
-  return events.find((data) => data.priority === priority);
+  console.log(events);
 };

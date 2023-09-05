@@ -5,7 +5,6 @@ import {
   Container,
   SelectBtn,
   SelectList,
-  CategoryWrap,
   ClearBtn,
 } from "./SelectCategory.styled";
 
@@ -16,8 +15,6 @@ export const SelectCategory = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
-
-  console.log(isSelected);
 
   useEffect(() => {
     if (isOpen) {
@@ -35,7 +32,7 @@ export const SelectCategory = ({
   };
 
   const onClearCategory = () => {
-    setSelectedCategory("Category");
+    setSelectedCategory("");
     setIsOpen(false);
     setIsSelected(false);
   };
@@ -54,28 +51,29 @@ export const SelectCategory = ({
           </svg>
         </div>
 
-        <CategoryWrap>
+        <div>
           <span>{selectedCategory}</span>
-        </CategoryWrap>
+        </div>
+        <SelectList
+          open={isOpen}
+          isSelected={isSelected}
+          selectedCategory={selectedCategory}
+          onClick={handleClick}
+        >
+          {categories.length > 0 &&
+            categories.map((item) => {
+              return (
+                <li data-id={item} key={item}>
+                  {item}
+                </li>
+              );
+            })}
+        </SelectList>
       </SelectBtn>
+
       <ClearBtn onClick={onClearCategory} open={isOpen} isSelected={isSelected}>
         <AiOutlineCloseCircle />
       </ClearBtn>
-      <SelectList
-        open={isOpen}
-        isSelected={isSelected}
-        selectedCategory={selectedCategory}
-        onClick={handleClick}
-      >
-        {categories.length > 0 &&
-          categories.map((item) => {
-            return (
-              <li data-id={item} key={item}>
-                {item}
-              </li>
-            );
-          })}
-      </SelectList>
     </Container>
   );
 };

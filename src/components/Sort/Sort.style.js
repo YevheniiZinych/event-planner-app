@@ -6,6 +6,7 @@ export const Container = styled.div`
 
 export const SortBtn = styled.button`
   position: ${({ open }) => (open ? "absolute" : "none")};
+
   right: 10px;
 
   display: flex;
