@@ -3,8 +3,8 @@
 <symbol id="add-icon" viewBox="0 0 34 32">
 <path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M16.889 1.778v28.444M2.667 16h28.444"></path>
 </symbol>
-<symbol id="arrow-lng" viewBox="0 0 55 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6.8571" d="M4.571 4.571l22.857 22.857 22.857-22.857"></path>
+<symbol id="arrow-lng"  viewBox="0 0 55 32">
+<path fill="none" stroke="#7b61ff" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6.8571" d="M4.571 4.571l22.857 22.857 22.857-22.857"></path>
 </symbol>
 <symbol id="category-icon" fill="none" viewBox="0 0 30 32" >
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.5263" d="M1.684 1.684l8.421 13.474v10.105l10.105 5.053v-15.158l8.421-13.474h-26.947z"></path>
@@ -20,6 +20,12 @@
 </symbol>
 <symbol id="right-icon" viewBox="0 0 19 32">
 <path fill="#7b61ff" style="fill: var(--color2, #7b61ff)" d="M18.080 17.92c0.375-0.375 0.586-0.883 0.587-1.413v-1.013c-0.006-0.529-0.216-1.035-0.587-1.413l-13.707-13.68c-0.25-0.252-0.591-0.394-0.947-0.394s-0.696 0.142-0.947 0.394l-1.893 1.893c-0.251 0.246-0.392 0.582-0.392 0.933s0.141 0.688 0.392 0.933l11.867 11.84-11.867 11.84c-0.252 0.25-0.394 0.591-0.394 0.947s0.142 0.696 0.394 0.947l1.893 1.867c0.25 0.252 0.591 0.394 0.947 0.394s0.696-0.142 0.947-0.394l13.707-13.68z"></path>
+</symbol>
+<symbol id="icon-clear-btn" viewBox="0 0 32 32">
+<path fill="none" stroke="#7b61ff" style="stroke: var(--color1, #7b61ff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.8" d="M28.8 3.2l-25.6 25.6M3.2 3.2l25.6 25.6"></path>
+</symbol>
+<symbol id="icon-back-btn" viewBox="0 0 41 32">
+<path fill="none" stroke="#7b61ff" style="stroke: var(--color1, #7b61ff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M2.286 16h36.571M2.286 16l13.714-13.714M2.286 16l13.714 13.714"></path>
 </symbol>
 </defs>
 </svg>

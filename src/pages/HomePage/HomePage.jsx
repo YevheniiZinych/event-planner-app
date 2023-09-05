@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCategory, getEvents } from "../../fakeAPI";
 import { EventCard } from "../../components/EventCard/EventCard";
-import { Container, EventList, FilterWrap } from "./HomePage.styled";
+import { Container, Title, EventList, FilterWrap } from "./HomePage.styled";
 import { SelectCategory } from "../../components/SelectCategory/SelectCategory";
 import { Sort } from "../../components/Sort/Sort";
 import { CreateBtn } from "../../components/CreateBtn/CreateBtn";
@@ -39,7 +39,7 @@ const HomePage = () => {
   return (
     <Container>
       <section>
-        <h2>My events</h2>
+        <Title>My events</Title>
         <FilterWrap>
           <SelectCategory
             categories={categories}
