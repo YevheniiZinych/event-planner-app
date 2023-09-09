@@ -39,7 +39,6 @@ const HomePage = () => {
   return (
     <Container>
       <section>
-        <Title>My events</Title>
         <FilterWrap>
           <SelectCategory
             categories={categories}
@@ -50,6 +49,7 @@ const HomePage = () => {
           <CreateBtn />
         </FilterWrap>
         <div>
+          <Title>My events</Title>
           <EventList>
             <EventCard events={filteredItem} />
           </EventList>

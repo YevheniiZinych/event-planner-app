@@ -21,19 +21,29 @@ export const FilterWrap = styled.div`
   justify-content: flex-end;
   gap: 24px;
 
-  width: 271px;
+  width: 100%;
 
-  margin-top: 180px;
   margin-bottom: 40px;
+  margin-top: 180px;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
-    margin-top: 100px;
+    margin-top: 150px;
     gap: 24px;
+    margin-bottom: 24px;
   }
 `;
 
 export const Title = styled.h2`
   display: none;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    display: block;
+    margin-bottom: 24px;
+
+    font-weight: ${({ theme }) => theme.fontWeights.l};
+    font-size: 32px;
+    line-height: 48px;
+  }
 `;
 
 export const EventList = styled.ul`

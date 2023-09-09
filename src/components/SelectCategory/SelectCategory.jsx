@@ -23,16 +23,16 @@ export const SelectCategory = ({
   }, [isOpen, setSelectedCategory]);
 
   const openSelect = () => {
-    setIsOpen(true);
-    setIsSelected((prev) => !prev);
+    setIsOpen((prev) => !prev);
   };
+
   const handleClick = (e) => {
     setSelectedCategory(e.target.dataset.id);
     setIsSelected(false);
   };
 
   const onClearCategory = () => {
-    setSelectedCategory("");
+    setSelectedCategory("Category");
     setIsOpen(false);
     setIsSelected(false);
   };

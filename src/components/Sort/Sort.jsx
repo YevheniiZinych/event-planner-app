@@ -7,7 +7,7 @@ export const Sort = ({ selectedSort, setSelectedSort }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onSelectSort = (e) => {
-    setIsOpen(false);
+    setSelectedSort(e.target.dataset.id);
   };
 
   useEffect(() => {
@@ -25,57 +25,59 @@ export const Sort = ({ selectedSort, setSelectedSort }) => {
             <use href={sprite + "#sort-icon"} />
           </svg>
         </div>
+        <div>
+          <SortList onClick={onSelectSort} open={isOpen}>
+            <li data-id="By name A-Z">
+              By name A-Z
+              <img src={arrow} width="16px" height="17px" alt="sort-arrow" />
+            </li>
+            <li data-id="By name Z-A">
+              By name Z-A
+              <img
+                style={{
+                  transform: "rotate(180deg)",
+                }}
+                src={arrow}
+                width="16px"
+                height="17px"
+                alt="sort-arrow"
+              />
+            </li>
+            <li data-id="By data">
+              By data
+              <img src={arrow} width="16px" height="17px" alt="sort-arrow" />
+            </li>
+            <li data-id="By data">
+              By data
+              <img
+                style={{
+                  transform: "rotate(180deg)",
+                }}
+                src={arrow}
+                width="16px"
+                height="17px"
+                alt="sort-arrow"
+              />
+            </li>
+            <li data-id="By priority">
+              By priority
+              <img src={arrow} width="16px" height="17px" alt="sort-arrow" />
+            </li>
+            <li data-id="By priority">
+              By priority
+              <img
+                style={{
+                  transform: "rotate(180deg)",
+                }}
+                src={arrow}
+                width="16px"
+                height="17px"
+                alt="sort-arrow"
+              />
+            </li>
+          </SortList>
+        </div>
       </SortBtn>
-      <SortList onClick={onSelectSort} open={isOpen}>
-        <li>
-          By name A-Z
-          <img src={arrow} width="16px" height="17px" alt="sort-arrow" />
-        </li>
-        <li>
-          By name Z-A
-          <img
-            style={{
-              transform: "rotate(180deg)",
-            }}
-            src={arrow}
-            width="16px"
-            height="17px"
-            alt="sort-arrow"
-          />
-        </li>
-        <li>
-          By data
-          <img src={arrow} width="16px" height="17px" alt="sort-arrow" />
-        </li>
-        <li>
-          By data
-          <img
-            style={{
-              transform: "rotate(180deg)",
-            }}
-            src={arrow}
-            width="16px"
-            height="17px"
-            alt="sort-arrow"
-          />
-        </li>
-        <li>
-          By priority
-          <img src={arrow} width="16px" height="17px" alt="sort-arrow" />
-        </li>
-        <li>
-          By priority
-          <img
-            style={{
-              transform: "rotate(180deg)",
-            }}
-            src={arrow}
-            width="16px"
-            height="17px"
-            alt="sort-arrow"
-          />
-        </li>
-      </SortList>
     </Container>
   );
 };

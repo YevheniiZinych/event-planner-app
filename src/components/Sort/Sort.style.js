@@ -7,7 +7,7 @@ export const Container = styled.div`
 export const SortBtn = styled.button`
   position: ${({ open }) => (open ? "absolute" : "none")};
 
-  right: 10px;
+  right: 0;
 
   display: flex;
   align-items: center;
@@ -32,6 +32,9 @@ export const SortBtn = styled.button`
   }
 
   svg {
+    position: absolute;
+    top: 15px;
+    right: ${({ open }) => (open ? "20px" : "15px")};
     stroke: ${({ open }) => (open ? "#7B61FF" : "#3f3f3f")};
     width: 24px;
     height: 24px;
@@ -39,11 +42,10 @@ export const SortBtn = styled.button`
 
   span {
     display: ${({ open }) => (open ? "block" : "none")};
-    margin-right: 41px;
 
     font-weight: ${({ theme }) => theme.fontWeights.m};
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 19px;
 
     color: ${({ theme, open }) => open && theme.color.main};
 
@@ -56,7 +58,8 @@ export const SortBtn = styled.button`
 
 export const SortList = styled.ul`
   position: absolute;
-  right: 10px;
+  display: block;
+  right: 0;
   top: 60px;
 
   width: 100%;
@@ -65,7 +68,6 @@ export const SortList = styled.ul`
 
   background-color: #fff;
   box-shadow: 0px 4px 10px 0px #00000040;
-  border-radius: 18px;
 
   z-index: 1;
 

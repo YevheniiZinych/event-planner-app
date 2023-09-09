@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
-  /* width: 100%; */
 `;
 
 export const SelectBtn = styled.button`
@@ -11,11 +10,11 @@ export const SelectBtn = styled.button`
   display: flex;
   align-items: center;
   left: -70px;
+  right: 0;
 
   /* transform: ${({ open }) => open && "translateX(-50%)"}; */
   width: ${({ open }) => (open ? "158px" : "56px")};
   height: 56px;
-  z-index: 1;
   padding: 16px;
 
   box-shadow: 2px 4px 9px 0px #a68dae47;
@@ -27,8 +26,10 @@ export const SelectBtn = styled.button`
   cursor: pointer;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    position: relative;
     width: 143px;
     padding: 10px;
+    left: 0;
   }
 
   svg {
@@ -66,7 +67,7 @@ export const SelectList = styled.ul`
   top: 60px;
   left: 0;
 
-  display: ${({ open, selectedCategory }) => (open ? "block" : "none")};
+  display: ${({ open }) => (open ? "block" : "none")};
 
   width: 100%;
 
@@ -111,12 +112,13 @@ export const ClearBtn = styled.span`
 
   z-index: 1;
 
-  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
-    color: ${({ isSelected }) => (isSelected ? "#7B61FF" : "#3f3f3f")};
-  }
-
   svg {
     height: 20px;
     width: 24px;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    color: ${({ isSelected }) => (isSelected ? "#7B61FF" : "#3f3f3f")};
+    right: 5px;
   }
 `;
