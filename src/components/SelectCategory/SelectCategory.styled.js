@@ -33,13 +33,13 @@ export const SelectBtn = styled.button`
   }
 
   svg {
-    stroke: ${({ open, selectedCategory }) =>
-      open || selectedCategory ? "#7B61FF" : "#3f3f3f"};
+    stroke: ${({ open, category }) =>
+      open || category ? "#7B61FF" : "#3f3f3f"};
     margin-right: 4px;
     margin-top: 2px;
 
     @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
-      stroke: ${({ isSelected }) => (isSelected ? "#7B61FF" : "#3f3f3f")};
+      stroke: ${({ selected }) => (selected ? "#7B61FF" : "#3f3f3f")};
     }
   }
 
@@ -52,12 +52,12 @@ export const SelectBtn = styled.button`
       display: ${({ open }) => (open ? "block" : "none")};
 
       margin-right: 15px;
-      color: ${({ open, selectedCategory }) =>
-        open || selectedCategory ? "#7B61FF" : "#3f3f3f"};
+      color: ${({ open, category }) =>
+        open || category ? "#7B61FF" : "#3f3f3f"};
     }
 
     @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
-      color: ${({ isSelected }) => (isSelected ? "#7B61FF" : "#3f3f3f")};
+      color: ${({ selected }) => (selected ? "#7B61FF" : "#3f3f3f")};
     }
   }
 `;
@@ -118,7 +118,7 @@ export const ClearBtn = styled.span`
   }
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
-    color: ${({ isSelected }) => (isSelected ? "#7B61FF" : "#3f3f3f")};
+    color: ${({ selected }) => (selected ? "#7B61FF" : "#3f3f3f")};
     right: 5px;
   }
 `;

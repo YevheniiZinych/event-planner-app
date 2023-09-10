@@ -20,6 +20,7 @@ import { UploadPicture } from "../UploadPicture/UploadPicture";
 import { createEvent } from "../../fakeAPI";
 import sprite from "../../img/sprite.svg";
 import { theme } from "../../utils/themeMUI";
+import minTwoDigits from "../../helpers/minTwoDigits";
 
 export const AddEventForm = () => {
   const [date, setDate] = useState("");
@@ -125,13 +126,19 @@ export const AddEventForm = () => {
   };
 
   const getDate = (e) => {
-    setDate(e);
+    const date = new Date(e);
+    const month = minTwoDigits(date.getMonth());
+    const day = minTwoDigits(date.getDay());
+
+    const eventDay = `${day}.${month}`;
+
+    setDate(eventDay);
   };
 
   const getTime = (e) => {
     const time = new Date(e);
-    const hours = time.getHours();
-    const minutes = time.getMinutes();
+    const hours = minTwoDigits(time.getHours());
+    const minutes = minTwoDigits(time.getMinutes());
 
     let partOfDay;
 
@@ -145,6 +152,7 @@ export const AddEventForm = () => {
 
     setTime(newTime);
   };
+
   return (
     <Form onSubmit={handleSubmit}>
       <ThemeProvider theme={theme}>

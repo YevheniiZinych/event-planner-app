@@ -13,6 +13,7 @@ import {
 
 export const EventCard = ({ events }) => {
   const location = useLocation();
+
   return (
     <>
       {events.length > 0 &&

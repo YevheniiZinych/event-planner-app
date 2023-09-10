@@ -7,11 +7,16 @@ import { Sort } from "../../components/Sort/Sort";
 import { CreateBtn } from "../../components/CreateBtn/CreateBtn";
 
 const HomePage = () => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(getEvents());
   const [categories, setCategories] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Category");
   const [selectedSort, setSelectedSort] = useState("Sort by");
   const [filteredItem, setFilteredItem] = useState([]);
+
+  useEffect(() => {
+    const category = getCategory();
+    setCategories(category);
+  }, [events]);
 
   useEffect(() => {
     const getFilteredEvent = () => {
@@ -28,13 +33,6 @@ const HomePage = () => {
 
     setFilteredItem(event);
   }, [categories, events, selectedCategory]);
-
-  useEffect(() => {
-    const data = getEvents();
-    const category = getCategory();
-    setEvents(data);
-    setCategories(category);
-  }, [events]);
 
   return (
     <Container>

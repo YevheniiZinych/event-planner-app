@@ -101,8 +101,8 @@ export const DateWrap = styled.div`
   height: 40px;
 
   span {
-    color: ${(props) => props.theme.color.main};
-    font-weight: ${(props) => props.theme.fontWeights.s};
+    color: ${({ theme }) => theme.color.main};
+    font-weight: ${({ theme }) => theme.fontWeights.s};
     font-size: 14px;
   }
 `;
@@ -127,7 +127,7 @@ export const CategoryWrap = styled.div`
     border-radius: 8px;
     padding: 6px 12px;
 
-    font-weight: ${(props) => props.theme.fontWeights.m};
+    font-weight: ${({ theme }) => theme.fontWeights.m};
     font-size: 14px;
     line-height: 20px;
   }

@@ -36,7 +36,7 @@ export const FilterWrap = styled.div`
 export const Title = styled.h2`
   display: none;
 
-  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tab}) {
     display: block;
     margin-bottom: 24px;
 
@@ -56,8 +56,6 @@ export const EventList = styled.ul`
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     grid-gap: 2rem;
-
-    max-height: 440px;
   }
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.desk}) {
@@ -65,7 +63,5 @@ export const EventList = styled.ul`
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 24px;
     grid-row-gap: 40px;
-
-    max-height: 530px;
   }
 `;

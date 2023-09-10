@@ -42,8 +42,8 @@ export const SelectCategory = ({
       <SelectBtn
         onClick={openSelect}
         open={isOpen}
-        selectedCategory={selectedCategory}
-        isSelected={isSelected}
+        category={selectedCategory}
+        selected={isSelected}
       >
         <div>
           <svg width="24px" height="24px">
@@ -54,12 +54,7 @@ export const SelectCategory = ({
         <div>
           <span>{selectedCategory}</span>
         </div>
-        <SelectList
-          open={isOpen}
-          isSelected={isSelected}
-          selectedCategory={selectedCategory}
-          onClick={handleClick}
-        >
+        <SelectList open={isOpen} onClick={handleClick}>
           {categories.length > 0 &&
             categories.map((item) => {
               return (
@@ -71,7 +66,7 @@ export const SelectCategory = ({
         </SelectList>
       </SelectBtn>
 
-      <ClearBtn onClick={onClearCategory} open={isOpen} isSelected={isSelected}>
+      <ClearBtn onClick={onClearCategory} open={isOpen} selected={isSelected}>
         <AiOutlineCloseCircle />
       </ClearBtn>
     </Container>
