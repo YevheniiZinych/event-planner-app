@@ -24,10 +24,8 @@ export const FilterWrap = styled.div`
   width: 100%;
 
   margin-bottom: 40px;
-  margin-top: 180px;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
-    margin-top: 150px;
     gap: 24px;
     margin-bottom: 24px;
   }

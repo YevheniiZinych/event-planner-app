@@ -147,8 +147,11 @@ export const getCategory = () => {
 };
 
 export const createEvent = (data) => {
-  console.log(data);
-  events.push(data);
+  events.shift(data);
+};
 
-  console.log(events);
+export const getEventById = (id) => {
+  const foundEvent = events.find((event) => event.id === id);
+
+  return foundEvent;
 };

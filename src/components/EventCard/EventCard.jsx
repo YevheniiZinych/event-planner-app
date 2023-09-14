@@ -51,7 +51,7 @@ export const EventCard = ({ events }) => {
                     <p>{description}</p>
                   </DescriptionWrap>
                   <MoreBtn>
-                    <NavLink to="/details" state={{ from: location }}>
+                    <NavLink to={`/details/${id}`} state={{ from: location }}>
                       More Inform
                     </NavLink>
                   </MoreBtn>

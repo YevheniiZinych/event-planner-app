@@ -134,6 +134,8 @@ export const CategoryWrap = styled.div`
 `;
 
 export const Inner = styled.div`
-  bottom: 0;
   position: absolute;
+  bottom: 0;
+
+  width: 100%;
 `;

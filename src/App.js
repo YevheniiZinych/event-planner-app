@@ -6,7 +6,7 @@ import { GlobalStyle } from "./components/GlobalStyle";
 import { mainTheme } from "./utils/theme";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import HomePage from "./pages/HomePage/HomePage";
-import Details from "./pages/Details/Details";
+import EventDetails from "./pages/Details/EventDetails";
 import { Container } from "./App.styled";
 import { AddEvent } from "./pages/AddEvent/AddEvent";
 
@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<HomePage />} />
               <Route path="/add-event" element={<AddEvent />} />
-              <Route path="/details" element={<Details />} />
+              <Route path="/details/:id" element={<EventDetails />} />
             </Route>
           </Routes>
         </LocalizationProvider>
