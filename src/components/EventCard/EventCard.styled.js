@@ -112,7 +112,7 @@ export const CategoryWrap = styled.div`
   top: 15px;
   left: 12px;
 
-  & span:first-child {
+  /* & span:first-child {
     color: ${({ theme }) => theme.color.main};
   }
 
@@ -130,7 +130,28 @@ export const CategoryWrap = styled.div`
     font-weight: ${({ theme }) => theme.fontWeights.m};
     font-size: 14px;
     line-height: 20px;
-  }
+  } */
+`;
+
+export const Category = styled.span`
+  min-width: 45px;
+
+  padding: 6px 12px 6px 12px;
+
+  color: ${({ theme }) => theme.color.main};
+  background-color: #fff;
+
+  font-weight: ${({ theme }) => theme.fontWeights.m};
+  font-size: 14px;
+  line-height: 20px;
+
+  border-radius: 8px;
+
+  margin-right: 12px;
+`;
+
+export const Priority = styled(Category)`
+  color: ${({ color }) => color};
 `;
 
 export const Inner = styled.div`

@@ -48,12 +48,11 @@ const HomePage = () => {
           <Sort selectedSort={selectedSort} setSelectedSort={setSelectedSort} />
           <CreateBtn />
         </FilterWrap>
-        <div>
-          <Title>My events</Title>
-          <EventList>
-            <EventCard events={filteredItem} />
-          </EventList>
-        </div>
+
+        <Title>My events</Title>
+        <EventList>
+          <EventCard events={filteredItem} />
+        </EventList>
       </section>
     </Container>
   );

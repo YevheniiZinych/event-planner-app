@@ -7,6 +7,12 @@ export const Container = styled.div`
 
   height: 100vh;
   width: 100%;
+
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Inner = styled.div`
@@ -16,6 +22,8 @@ export const Inner = styled.div`
 export const BackLink = styled(NavLink)`
   display: flex;
   align-items: center;
+
+  margin-bottom: 24px;
   span {
     color: ${(props) => props.theme.color.main};
 
@@ -28,4 +36,11 @@ export const BackLink = styled(NavLink)`
     width: 24px;
     height: 24px;
   }
+`;
+
+export const Title = styled.h1`
+  font-weight: ${({ theme }) => theme.fontWeights.l};
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 24px;
 `;

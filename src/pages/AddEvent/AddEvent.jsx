@@ -5,13 +5,14 @@ import { AddEventForm } from "../../components/AddEventForm/AddEventForm";
 
 export const AddEvent = () => {
   const location = useLocation();
+
   const backLinkHref = location.state?.from ?? "/add-event";
 
   return (
     <Container>
       <section>
         <Inner>
-          <BackLink to={backLinkHref}>
+          <BackLink to={backLinkHref} state={{ from: "/" }}>
             <svg width="16px" height="12px">
               <use href={sprite + "#icon-back-btn"} />{" "}
             </svg>

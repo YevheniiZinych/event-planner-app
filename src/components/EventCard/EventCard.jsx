@@ -9,7 +9,10 @@ import {
   DescriptionWrap,
   Inner,
   MoreBtn,
+  Category,
+  Priority,
 } from "./EventCard.styled";
+import { priorityColor } from "../../helpers/priorityColor";
 
 export const EventCard = ({ events }) => {
   const location = useLocation();
@@ -34,8 +37,10 @@ export const EventCard = ({ events }) => {
                 <ImageWrap>
                   <ImgEvent loading="lazy" src={img} alt="#" />
                   <CategoryWrap>
-                    <span>{category}</span>
-                    <span>{priority}</span>
+                    <Category>{category}</Category>
+                    <Priority color={priorityColor(priority)}>
+                      {priority}
+                    </Priority>
                   </CategoryWrap>
                 </ImageWrap>
 
