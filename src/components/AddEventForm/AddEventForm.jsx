@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { ThemeProvider } from "@mui/material";
 import dayjs from "dayjs";
@@ -23,7 +23,7 @@ import minTwoDigits from "../../helpers/minTwoDigits";
 import { updateEvent } from "../../fakeAPI";
 
 export const AddEventForm = ({ event, id }) => {
-  const [updateId, setUpdateId] = useState(id ?? "");
+  const [updateId, setUpdateId] = useState();
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [title, setTitle] = useState(event ? event.title : "");
@@ -34,6 +34,10 @@ export const AddEventForm = ({ event, id }) => {
   const [eventPhoto, setEventPhoto] = useState(event ? event.img : "");
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isPriorityOpen, setIsPriorityOpen] = useState(false);
+
+  useEffect(() => {
+    setUpdateId(id ?? "");
+  }, [id]);
 
   const onHandleChange = (e) => {
     switch (e.target.name) {

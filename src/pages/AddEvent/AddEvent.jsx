@@ -25,7 +25,7 @@ export const AddEvent = () => {
           </BackLink>
           <h1>Create new event</h1>
         </Inner>
-        <AddEventForm event={event} id={id} />
+        <AddEventForm event={event} id={id} setEvent={setEvent} />
       </section>
     </Container>
   );
