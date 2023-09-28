@@ -40,9 +40,12 @@ export const createEvent = (data) => {
 export const getEventById = (id) => {
   const events = localStorage.getItem(LOCAL_KEY);
   const parseEvent = JSON.parse(events);
+  if (parseEvent) {
+    const foundEvent = parseEvent.find((event) => event.id === id);
+    return foundEvent;
+  }
 
-  const foundEvent = parseEvent.find((event) => event.id === id);
-  return foundEvent;
+  return {};
 };
 
 export const updateEvent = (id, data) => {
