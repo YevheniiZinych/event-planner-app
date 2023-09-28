@@ -1,9 +1,14 @@
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useLocation } from "react-router";
 import { Container, BackLink, Inner } from "./AddEvent.style";
 import sprite from "../../img/sprite.svg";
 import { AddEventForm } from "../../components/AddEventForm/AddEventForm";
+import { getEventById } from "../../fakeAPI";
 
 export const AddEvent = () => {
+  const { id } = useParams();
+  const [event, setEvent] = useState(getEventById(id));
   const location = useLocation();
 
   const backLinkHref = location.state?.from ?? "/add-event";
@@ -20,7 +25,7 @@ export const AddEvent = () => {
           </BackLink>
           <h1>Create new event</h1>
         </Inner>
-        <AddEventForm />
+        <AddEventForm event={event} id={id} />
       </section>
     </Container>
   );

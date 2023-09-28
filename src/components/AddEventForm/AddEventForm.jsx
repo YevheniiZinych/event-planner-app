@@ -14,23 +14,24 @@ import {
   LabelTime,
   LabelImage,
 } from "./AddEventForm.styled";
-
 import { Calendar, Time } from "./AddEventForm.mui.style";
 import { UploadPicture } from "../UploadPicture/UploadPicture";
 import { createEvent } from "../../fakeAPI";
 import sprite from "../../img/sprite.svg";
 import { theme } from "../../utils/themeMUI";
 import minTwoDigits from "../../helpers/minTwoDigits";
+import { updateEvent } from "../../fakeAPI";
 
-export const AddEventForm = () => {
+export const AddEventForm = ({ event, id }) => {
+  const [updateId, setUpdateId] = useState(id ?? "");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(event ? event.title : "");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [priority, setPriority] = useState("");
-  const [loc, setLoc] = useState("");
-  const [eventPhoto, setEventPhoto] = useState("");
+  const [category, setCategory] = useState(event?.category ?? "");
+  const [priority, setPriority] = useState(event ? event.priority : "");
+  const [loc, setLoc] = useState(event ? event.place : "");
+  const [eventPhoto, setEventPhoto] = useState(event ? event.img : "");
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isPriorityOpen, setIsPriorityOpen] = useState(false);
 
@@ -102,6 +103,7 @@ export const AddEventForm = () => {
     setCategory("");
     setPriority("");
     setLoc("");
+    setEventPhoto("");
   };
 
   const handleSubmit = (e) => {
@@ -109,7 +111,7 @@ export const AddEventForm = () => {
     const id = new Date().getTime();
 
     const data = {
-      id,
+      id: updateId.toString() || id.toString(),
       title,
       description,
       priority,
@@ -119,6 +121,13 @@ export const AddEventForm = () => {
       time,
       date,
     };
+
+    if (event) {
+      updateEvent(updateId, data);
+      clearForm();
+
+      return;
+    }
 
     createEvent(data);
 
@@ -175,7 +184,7 @@ export const AddEventForm = () => {
           <textarea
             onChange={onHandleChange}
             name="description"
-            value={description}
+            value={event ? event.description : description}
           ></textarea>
           <button onClick={onDeleteValue} type="button" data-id="description">
             <svg data-id="description" width="10px" height="10px">
@@ -186,13 +195,16 @@ export const AddEventForm = () => {
         <LabelDate>
           <span>Select date</span>
           <DemoContainer components={["DatePicker"]}>
-            <Calendar value={dayjs(date)} onChange={getDate} />
+            <Calendar
+              value={dayjs(event ? event.date : date)}
+              onChange={getDate}
+            />
           </DemoContainer>
         </LabelDate>
         <LabelTime>
           <span>Select time</span>
           <DemoContainer components={["DesktopTimePicker"]}>
-            <Time value={time} onChange={getTime} />
+            <Time value={event ? event.time : time} onChange={getTime} />
           </DemoContainer>
         </LabelTime>
         <LabelLocation className="location">
@@ -201,7 +213,7 @@ export const AddEventForm = () => {
             onChange={onHandleChange}
             type="text"
             name="location"
-            value={loc}
+            value={event ? event.place : loc}
           />
           <button onClick={onDeleteValue} type="button" data-id="location">
             <svg data-id="location" width="10px" height="10px">
@@ -250,6 +262,7 @@ export const AddEventForm = () => {
             <li data-id="Low">Low</li>
           </ul>
         </LabelPriority>
+
         <AddBtn type="submit">Add event</AddBtn>
       </ThemeProvider>
     </Form>

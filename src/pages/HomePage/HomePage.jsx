@@ -6,6 +6,8 @@ import { SelectCategory } from "../../components/SelectCategory/SelectCategory";
 import { Sort } from "../../components/Sort/Sort";
 import { CreateBtn } from "../../components/CreateBtn/CreateBtn";
 
+// const LOCAL_KEY = "events";
+
 const HomePage = () => {
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState("");
@@ -15,10 +17,11 @@ const HomePage = () => {
 
   useEffect(() => {
     const event = getEvents();
+
     const category = getCategory();
     setEvents(event);
     setCategories(category);
-  }, [events]);
+  }, []);
 
   useEffect(() => {
     const getFilteredEvent = () => {
@@ -34,7 +37,7 @@ const HomePage = () => {
     const event = getFilteredEvent();
 
     setFilteredItem(event);
-  }, [categories, events, selectedCategory]);
+  }, [events, selectedCategory]);
 
   return (
     <Container>

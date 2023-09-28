@@ -1,157 +1,56 @@
-import artImg from "./img/art-min.png";
-import musicImg from "./img/music-min.png";
-import businessImg from "./img/business-min.png";
-import confImg from "./img/conference-min.png";
-import workshopImg from "./img/workshop-min.png";
-import sportImg from "./img/sport-min.png";
-import partyImg from "./img/party-min.png";
-
-const events = [
-  {
-    id: "1",
-    title: "Hobby 1",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Hight",
-    category: "Art",
-    img: artImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-  {
-    id: "2",
-    title: "Hobby 2",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Medium",
-    category: "Art",
-    img: artImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-  {
-    id: "3",
-    title: "Hobby 3",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Low",
-    category: "Music",
-    img: musicImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-  {
-    id: "4",
-    title: "Hobby 4",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Hight",
-    category: "Music",
-    img: musicImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-  {
-    id: "5",
-    title: "Hobby 5",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Medium",
-    category: "Business",
-    img: businessImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-  {
-    id: "6",
-    title: "Hobby 6",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Low",
-    category: "Conference",
-    img: confImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-  {
-    id: "7",
-    title: "Hobby 7",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Hight",
-    category: "Workshop",
-    img: workshopImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-  {
-    id: "8",
-    title: "Hobby 8",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Medium",
-    category: "Sport",
-    img: sportImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-  {
-    id: "9",
-    title: "Hobby 9",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Low",
-    category: "Sport",
-    img: sportImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-  {
-    id: "10",
-    title: "Hobby 10",
-    description:
-      "Unlock the secrets of effective leadership at our transformative Success Leadership Conference.",
-    priority: "Medium",
-    category: "Party",
-    img: partyImg,
-    place: "Kyiv",
-    date: "12.07",
-    time: "12:00",
-  },
-];
+const LOCAL_KEY = "events";
 
 export const getEvents = () => {
-  return events;
+  const events = JSON.parse(localStorage.getItem(LOCAL_KEY));
+
+  return events ? events : [];
 };
 
 export const getCategory = () => {
-  const data = events.map(({ category }) => category);
-  const uniqueData = new Set(data);
+  const events = JSON.parse(localStorage.getItem(LOCAL_KEY));
 
   let uniqueCategory = [];
-
-  for (const item of uniqueData) {
-    uniqueCategory.push(item);
+  if (events) {
+    const data = events.map(({ category }) => category);
+    const uniqueData = new Set(data);
+    for (const item of uniqueData) {
+      uniqueCategory.push(item);
+    }
   }
 
-  return uniqueCategory;
+  return uniqueCategory ? uniqueCategory : [];
 };
 
 export const createEvent = (data) => {
-  events.shift(data);
+  const events = localStorage.getItem(LOCAL_KEY);
+  const parseEvent = JSON.parse(events);
+
+  if (parseEvent) {
+    const x = [...parseEvent, data];
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(x));
+  }
+
+  if (!events) {
+    const newEvent = [];
+    newEvent.push(data);
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(newEvent));
+  }
 };
 
 export const getEventById = (id) => {
-  const foundEvent = events.find((event) => event.id === id);
+  const events = localStorage.getItem(LOCAL_KEY);
+  const parseEvent = JSON.parse(events);
 
+  const foundEvent = parseEvent.find((event) => event.id === id);
   return foundEvent;
+};
+
+export const updateEvent = (id, data) => {
+  const events = localStorage.getItem(LOCAL_KEY);
+  const parseEvent = JSON.parse(events);
+  const index = parseEvent.findIndex((el) => el.id === id);
+
+  parseEvent.splice(index, 1, data);
+
+  localStorage.setItem(LOCAL_KEY, JSON.stringify(parseEvent));
 };

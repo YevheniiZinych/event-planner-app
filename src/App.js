@@ -19,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<HomePage />} />
+              <Route path="/add-event" element={<AddEvent />} />
               <Route path="/add-event/:id" element={<AddEvent />} />
               <Route path="/details/:id" element={<EventDetails />} />
             </Route>
