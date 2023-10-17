@@ -6,6 +6,12 @@ export const Card = styled.div`
   box-shadow: 2px 4px 9px 0px #a68dae47;
 
   background-color: white;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.desk}) {
+  }
 `;
 
 export const Figure = styled.figure`

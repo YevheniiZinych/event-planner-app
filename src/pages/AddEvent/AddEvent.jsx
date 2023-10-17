@@ -19,7 +19,7 @@ export const AddEvent = () => {
         <Inner>
           <BackLink to={backLinkHref} state={{ from: "/" }}>
             <svg width="16px" height="12px">
-              <use href={sprite + "#icon-back-btn"} />{" "}
+              <use href={sprite + "#icon-back-btn"} />
             </svg>
             <span> Back</span>
           </BackLink>
