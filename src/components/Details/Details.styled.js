@@ -8,9 +8,8 @@ export const Card = styled.div`
   background-color: white;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
-  }
-
-  @media screen and (min-width: ${(props) => props.theme.breakpoints.desk}) {
+    width: 688px;
+    min-height: 500px;
   }
 `;
 
@@ -36,6 +35,10 @@ export const Img = styled.img`
   object-fit: cover;
 
   border-radius: 8px;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    height: 220px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -44,6 +47,12 @@ export const Wrapper = styled.div`
 
   margin-left: 16px;
   margin-bottom: 12px;
+`;
+
+export const Inner = styled.div`
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    display: flex;
+  }
 `;
 
 export const Priority = styled.div`
@@ -61,7 +70,7 @@ export const Priority = styled.div`
 `;
 
 export const Category = styled.div`
-  width: 45px;
+  min-width: 45px;
   height: 32px;
 
   padding: 6px 12px 6px 12px;
@@ -71,7 +80,7 @@ export const Category = styled.div`
 `;
 
 export const Place = styled.div`
-  width: 53px;
+  min-width: 53px;
   height: 32px;
 
   padding: 6px 12px 6px 12px;
@@ -100,6 +109,12 @@ export const BtnWrap = styled.div`
 
   width: 100%;
   margin-left: 16px;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    justify-content: flex-end;
+    margin-left: 0;
+    margin-top: 50px;
+  }
 `;
 
 export const EditBth = styled.button`
@@ -128,4 +143,8 @@ export const DeleteBth = styled.button`
 
   border: none;
   border-radius: 8px;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    margin-right: 10px;
+  }
 `;

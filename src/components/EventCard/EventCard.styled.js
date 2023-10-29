@@ -112,7 +112,7 @@ export const CategoryWrap = styled.div`
   top: 15px;
   left: 12px;
 
-  /* & span:first-child {
+  & span:first-child {
     color: ${({ theme }) => theme.color.main};
   }
 
@@ -130,7 +130,7 @@ export const CategoryWrap = styled.div`
     font-weight: ${({ theme }) => theme.fontWeights.m};
     font-size: 14px;
     line-height: 20px;
-  } */
+  }
 `;
 
 export const Category = styled.span`

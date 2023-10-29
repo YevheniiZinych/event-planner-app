@@ -1,11 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import sprite from "../../img/sprite.svg";
 import { Container, SortBtn, SortList } from "./Sort.style";
 import arrow from "../../img/sort-arrow.png";
 
-export const Sort = ({ selectedSort, setSelectedSort }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+export const Sort = ({ selectedSort, setSelectedSort, isOpen, setIsOpen }) => {
   const onSelectSort = (e) => {
     setSelectedSort(e.target.dataset.id);
   };

@@ -1,19 +1,29 @@
 import { useState, useEffect } from "react";
 import { getCategory, getEvents } from "../../fakeAPI";
 import { EventCard } from "../../components/EventCard/EventCard";
-import { Container, Title, EventList, FilterWrap } from "./HomePage.styled";
+import {
+  Container,
+  Title,
+  EventList,
+  FilterWrap,
+  Inner,
+} from "./HomePage.styled";
 import { SelectCategory } from "../../components/SelectCategory/SelectCategory";
 import { Sort } from "../../components/Sort/Sort";
 import { CreateBtn } from "../../components/CreateBtn/CreateBtn";
 
-// const LOCAL_KEY = "events";
-
 const HomePage = () => {
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Category");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSort, setSelectedSort] = useState("Sort by");
   const [filteredItem, setFilteredItem] = useState([]);
+
+  useEffect(() => {
+    if (isFilterOpen) setIsCategoryOpen(false);
+  }, [isCategoryOpen, isFilterOpen]);
 
   useEffect(() => {
     const event = getEvents();
@@ -40,24 +50,37 @@ const HomePage = () => {
   }, [events, selectedCategory]);
 
   return (
-    <Container>
-      <section>
-        <FilterWrap>
-          <SelectCategory
-            categories={categories}
-            setSelectedCategory={setSelectedCategory}
-            selectedCategory={selectedCategory}
-          />
-          <Sort selectedSort={selectedSort} setSelectedSort={setSelectedSort} />
-          <CreateBtn />
-        </FilterWrap>
+    <main>
+      <Container>
+        <section>
+          <FilterWrap>
+            <Inner>
+              <SelectCategory
+                isOpen={isCategoryOpen}
+                setIsOpen={setIsCategoryOpen}
+                categories={categories}
+                setSelectedCategory={setSelectedCategory}
+                selectedCategory={selectedCategory}
+              />
+              <Sort
+                isOpen={isFilterOpen}
+                setIsOpen={setIsFilterOpen}
+                selectedSort={selectedSort}
+                setSelectedSort={setSelectedSort}
+              />
+              <CreateBtn />
+            </Inner>
+          </FilterWrap>
+        </section>
 
-        <Title>My events</Title>
-        <EventList>
-          <EventCard events={filteredItem} />
-        </EventList>
-      </section>
-    </Container>
+        <section>
+          <Title>My events</Title>
+          <EventList>
+            <EventCard events={filteredItem} />
+          </EventList>
+        </section>
+      </Container>
+    </main>
   );
 };
 

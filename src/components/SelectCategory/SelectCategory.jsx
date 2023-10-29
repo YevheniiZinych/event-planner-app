@@ -12,15 +12,14 @@ export const SelectCategory = ({
   categories,
   setSelectedCategory,
   selectedCategory,
+  isOpen,
+  setIsOpen,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      setSelectedCategory("Category");
-    }
-  }, [isOpen, setSelectedCategory]);
+    if (isOpen) setSelectedCategory("Categories");
+  }, [categories, isOpen, setSelectedCategory]);
 
   const openSelect = () => {
     setIsOpen((prev) => !prev);
@@ -32,7 +31,7 @@ export const SelectCategory = ({
   };
 
   const onClearCategory = () => {
-    setSelectedCategory("Category");
+    setSelectedCategory("Categories");
     setIsOpen(false);
     setIsSelected(false);
   };

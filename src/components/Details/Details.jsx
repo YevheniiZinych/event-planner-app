@@ -9,6 +9,7 @@ import {
   Priority,
   Place,
   Wrapper,
+  Inner,
   Time,
   DeleteBth,
   EditBth,
@@ -16,7 +17,7 @@ import {
 } from "./Details.styled";
 
 export const Details = ({ event, location }) => {
-  const { id, description, priority, category, img, place, date, time } = event;
+  const { id, description, priority, category, img, plays, date, time } = event;
 
   return (
     <Card>
@@ -24,16 +25,18 @@ export const Details = ({ event, location }) => {
         <Img src={img} alt="event_image" />
         <Figcaption>{description}</Figcaption>
       </Figure>
-      <Wrapper>
-        <Category>{category}</Category>
-        <Priority priority={priorityColor(priority)}>
-          <p>{priority}</p>
-        </Priority>
-        <Place>{place}</Place>
-      </Wrapper>
-      <Time>
-        {date} at {time}
-      </Time>
+      <Inner>
+        <Wrapper>
+          <Category>{category}</Category>
+          <Priority priority={priorityColor(priority)}>
+            <p>{priority}</p>
+          </Priority>
+          <Place>{plays}</Place>
+        </Wrapper>
+        <Time>
+          {date} at {time}
+        </Time>
+      </Inner>
 
       <BtnWrap>
         <NavLink to={`/add-event/${id}`} state={{ from: location }}>

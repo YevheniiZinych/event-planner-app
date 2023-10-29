@@ -38,7 +38,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const SelectStyle = styled.button`
+export const SelectLang = styled.button`
   position: relative;
   display: flex;
   justify-content: center;
@@ -60,6 +60,8 @@ export const SelectStyle = styled.button`
   text-indent: 1px;
 
   cursor: pointer;
+
+  transition: all 2s ease-in-out;
 `;
 
 export const ListLng = styled.ul`
@@ -73,6 +75,7 @@ export const ListLng = styled.ul`
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 2px 4px 9px 0px #a68dae47;
+  transition: display 5s ease-in-out;
 
   z-index: 2;
 

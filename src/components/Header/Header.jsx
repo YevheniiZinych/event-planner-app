@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import {
   HeaderBox,
   Title,
   Wrapper,
-  SelectStyle,
+  SelectLang,
   ListLng,
   SearchBox,
   SearchInput,
@@ -14,7 +14,6 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [language, setLanguage] = useState("UK");
   const [searchValue, setSearchValue] = useState("");
-  const menuRef = useRef();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -27,28 +26,17 @@ export const Header = () => {
     setIsOpen(true);
   };
 
-  useEffect(() => {
-    const closeDropdown = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("click", closeDropdown);
-
-    return () => document.addEventListener("click", closeDropdown);
-  }, []);
-
   return (
     <HeaderBox>
       <Wrapper>
         <Title>Event Planner</Title>
-        <SelectStyle onClick={() => setIsOpen((prev) => !prev)} ref={menuRef}>
+        <SelectLang onClick={() => setIsOpen((prev) => !prev)}>
           {language}
           <ListLng open={isOpen} onClick={handleClick}>
             <li data-id="UK">UK</li>
             <li data-id="UA">UA</li>
           </ListLng>
-        </SelectStyle>
+        </SelectLang>
       </Wrapper>
       <SearchBox>
         <SearchInput

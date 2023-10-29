@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
 
@@ -12,19 +12,19 @@ export const Container = styled.div`
 
   &::-webkit-scrollbar {
     display: none;
-  }
+  } */
 `;
 
 export const FilterWrap = styled.div`
   position: relative;
   display: flex;
   justify-content: flex-end;
-  gap: 24px;
+`;
 
-  width: 100%;
-
-  margin-bottom: 40px;
-  margin-top: 150px;
+export const Inner = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-top: 200px;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
     gap: 24px;

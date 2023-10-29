@@ -17,6 +17,10 @@ export const Container = styled.div`
 
 export const Inner = styled.div`
   margin-top: 200px;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    margin-top: 120px;
+  }
 `;
 
 export const BackLink = styled(NavLink)`

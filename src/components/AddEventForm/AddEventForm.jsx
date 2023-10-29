@@ -16,20 +16,19 @@ import {
 } from "./AddEventForm.styled";
 import { Calendar, Time } from "./AddEventForm.mui.style";
 import { UploadPicture } from "../UploadPicture/UploadPicture";
-import { createEvent } from "../../fakeAPI";
+import { createEvent, updateEvent } from "../../fakeAPI";
 import sprite from "../../img/sprite.svg";
 import { theme } from "../../utils/themeMUI";
 import minTwoDigits from "../../helpers/minTwoDigits";
-import { updateEvent } from "../../fakeAPI";
 
 export const AddEventForm = ({ event, id }) => {
   const [updateId, setUpdateId] = useState();
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [title, setTitle] = useState(event ? event.title : "");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState(event.title ?? "");
+  const [description, setDescription] = useState(event.description ?? "");
   const [category, setCategory] = useState(event?.category ?? "");
-  const [priority, setPriority] = useState(event ? event.priority : "");
+  const [priority, setPriority] = useState(event.priority ?? "");
   const [loc, setLoc] = useState(event ? event.place : "");
   const [eventPhoto, setEventPhoto] = useState(event ? event.img : "");
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -126,7 +125,7 @@ export const AddEventForm = ({ event, id }) => {
       date,
     };
 
-    if (event) {
+    if (event.length > 0) {
       updateEvent(updateId, data);
       clearForm();
 
@@ -188,7 +187,7 @@ export const AddEventForm = ({ event, id }) => {
           <textarea
             onChange={onHandleChange}
             name="description"
-            value={event ? event.description : description}
+            value={description}
           ></textarea>
           <button onClick={onDeleteValue} type="button" data-id="description">
             <svg data-id="description" width="10px" height="10px">

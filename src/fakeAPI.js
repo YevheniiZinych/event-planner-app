@@ -22,15 +22,18 @@ export const getCategory = () => {
 };
 
 export const createEvent = (data) => {
+  console.log(data);
   const events = localStorage.getItem(LOCAL_KEY);
   const parseEvent = JSON.parse(events);
+  console.log(events);
+  console.log(parseEvent);
 
   if (parseEvent) {
     const x = [...parseEvent, data];
     localStorage.setItem(LOCAL_KEY, JSON.stringify(x));
   }
 
-  if (!events) {
+  if (!!events) {
     const newEvent = [];
     newEvent.push(data);
     localStorage.setItem(LOCAL_KEY, JSON.stringify(newEvent));
@@ -51,9 +54,9 @@ export const getEventById = (id) => {
 export const updateEvent = (id, data) => {
   const events = localStorage.getItem(LOCAL_KEY);
   const parseEvent = JSON.parse(events);
-  const index = parseEvent.findIndex((el) => el.id === id);
+  const index = parseEvent?.findIndex((el) => el.id === id);
 
-  parseEvent.splice(index, 1, data);
+  parseEvent?.splice(index, 1, data);
 
   localStorage.setItem(LOCAL_KEY, JSON.stringify(parseEvent));
 };

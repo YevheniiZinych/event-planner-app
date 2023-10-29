@@ -5,15 +5,14 @@ export const Container = styled.div`
 `;
 
 export const SelectBtn = styled.button`
-  position: ${({ open }) => (open ? "absolute" : "none")};
-
+  position: relative;
   display: flex;
   align-items: center;
-  left: -70px;
-  right: 0;
+  gap: 5px;
 
-  /* transform: ${({ open }) => open && "translateX(-50%)"}; */
-  width: ${({ open }) => (open ? "158px" : "56px")};
+  width: ${({ open }) => (open ? "155px" : "56px")};
+  float: left;
+
   height: 56px;
   padding: 16px;
 
@@ -47,8 +46,9 @@ export const SelectBtn = styled.button`
     font-weight: ${({ theme }) => theme.fontWeights.m};
     font-size: 16px;
     line-height: 24px;
-    @media screen and (max-width: ${(props) =>
-        props.theme.breakpoints.mobMax}) {
+    transition: ${({ theme }) => theme.transitions.main};
+
+    @media screen and (max-width: ${({ theme }) => theme.breakpoints.mobMax}) {
       display: ${({ open }) => (open ? "block" : "none")};
 
       margin-right: 15px;
@@ -102,7 +102,7 @@ export const SelectList = styled.ul`
 export const ClearBtn = styled.span`
   position: absolute;
   display: ${({ open }) => (open ? "flex" : "none")};
-  right: -80px;
+  right: 0;
   top: 19px;
   align-items: center;
 
