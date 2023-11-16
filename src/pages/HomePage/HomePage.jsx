@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCategory, getEvents } from "../../fakeAPI";
 import { EventCard } from "../../components/EventCard/EventCard";
-import {
-  Container,
-  Title,
-  EventList,
-  FilterWrap,
-  Inner,
-} from "./HomePage.styled";
+import { Container, Title, EventList, FilterWrap } from "./HomePage.styled";
 import { SelectCategory } from "../../components/SelectCategory/SelectCategory";
 import { Sort } from "../../components/Sort/Sort";
 import { CreateBtn } from "../../components/CreateBtn/CreateBtn";
