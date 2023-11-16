@@ -35,7 +35,7 @@ export const EventCard = ({ events }) => {
             return (
               <EventItem key={id}>
                 <ImageWrap>
-                  <ImgEvent loading="lazy" src={img} alt="#" />
+                  <ImgEvent loading="lazy" src={img} alt="Event photo" />
                   <CategoryWrap>
                     <Category>{category}</Category>
                     <Priority color={priorityColor(priority)}>

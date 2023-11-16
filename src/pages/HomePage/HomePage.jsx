@@ -54,22 +54,20 @@ const HomePage = () => {
       <Container>
         <section>
           <FilterWrap>
-            <Inner>
-              <SelectCategory
-                isOpen={isCategoryOpen}
-                setIsOpen={setIsCategoryOpen}
-                categories={categories}
-                setSelectedCategory={setSelectedCategory}
-                selectedCategory={selectedCategory}
-              />
-              <Sort
-                isOpen={isFilterOpen}
-                setIsOpen={setIsFilterOpen}
-                selectedSort={selectedSort}
-                setSelectedSort={setSelectedSort}
-              />
-              <CreateBtn />
-            </Inner>
+            <SelectCategory
+              isOpen={isCategoryOpen}
+              setIsOpen={setIsCategoryOpen}
+              categories={categories}
+              setSelectedCategory={setSelectedCategory}
+              selectedCategory={selectedCategory}
+            />
+            <Sort
+              isOpen={isFilterOpen}
+              setIsOpen={setIsFilterOpen}
+              selectedSort={selectedSort}
+              setSelectedSort={setSelectedSort}
+            />
+            <CreateBtn />
           </FilterWrap>
         </section>
 

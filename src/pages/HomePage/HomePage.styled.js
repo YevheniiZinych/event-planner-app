@@ -1,30 +1,35 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-
+  width: 320px;
   height: 100vh;
+
+  margin: 0 auto;
 
   overflow: hidden;
   overflow-y: scroll;
 
-  &::-webkit-scrollbar {
-    display: none;
-  } */
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    width: 768px;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.desk}) {
+    width: 1280px;
+    padding: 0 30px;
+  }
 `;
 
 export const FilterWrap = styled.div`
   position: relative;
-  display: flex;
-  justify-content: flex-end;
-`;
 
-export const Inner = styled.div`
   display: flex;
   gap: 20px;
+
+  width: 320px;
+
   margin-top: 200px;
+  margin-left: 60px;
+  margin-bottom: 40px;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
     gap: 24px;
@@ -32,35 +37,36 @@ export const Inner = styled.div`
   }
 `;
 
+export const Inner = styled.div``;
+
 export const Title = styled.h2`
   display: none;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tab}) {
     display: block;
     margin-bottom: 24px;
+    margin-left: 28px;
 
     font-weight: ${({ theme }) => theme.fontWeights.l};
     font-size: 32px;
     line-height: 48px;
   }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.desk}) {
+    margin-left: 10px;
+  }
 `;
 
 export const EventList = styled.ul`
-  max-height: 350px;
+  display: grid;
+  place-items: center;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    grid-gap: 2rem;
   }
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.desk}) {
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 24px;
-    grid-row-gap: 40px;
   }
 `;

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { ThemeProvider } from "@mui/material";
 import dayjs from "dayjs";
@@ -25,10 +26,10 @@ export const AddEventForm = ({ event, id }) => {
   const [updateId, setUpdateId] = useState();
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [title, setTitle] = useState(event.title ?? "");
-  const [description, setDescription] = useState(event.description ?? "");
+  const [title, setTitle] = useState(event?.title ?? "");
+  const [description, setDescription] = useState(event?.description ?? "");
   const [category, setCategory] = useState(event?.category ?? "");
-  const [priority, setPriority] = useState(event.priority ?? "");
+  const [priority, setPriority] = useState(event?.priority ?? "");
   const [loc, setLoc] = useState(event ? event.place : "");
   const [eventPhoto, setEventPhoto] = useState(event ? event.img : "");
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -125,7 +126,9 @@ export const AddEventForm = ({ event, id }) => {
       date,
     };
 
-    if (event.length > 0) {
+    console.log(data);
+
+    if (event?.length > 0) {
       updateEvent(updateId, data);
       clearForm();
 
@@ -266,7 +269,9 @@ export const AddEventForm = ({ event, id }) => {
           </ul>
         </LabelPriority>
 
-        <AddBtn type="submit">Add event</AddBtn>
+        <AddBtn type="submit">
+          <NavLink to={"/"}>Add event</NavLink>
+        </AddBtn>
       </ThemeProvider>
     </Form>
   );

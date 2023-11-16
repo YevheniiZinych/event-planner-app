@@ -57,10 +57,11 @@ export const MoreBtn = styled.button`
 
 export const EventItem = styled.li`
   position: relative;
-  height: 480px;
+  min-height: 480px;
   width: 271px;
 
   box-shadow: 2px 4px 9px 0px #a68dae47;
+  border-radius: 12px;
   background-color: #fff;
 
   overflow: hidden;
@@ -75,6 +76,15 @@ export const EventItem = styled.li`
 
   &:hover ${MoreBtn} {
     transform: translateX(0);
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+    width: 332px;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.desk}) {
+    width: 290px;
+    margin-bottom: 24px;
   }
 `;
 

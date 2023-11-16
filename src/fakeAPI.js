@@ -22,18 +22,16 @@ export const getCategory = () => {
 };
 
 export const createEvent = (data) => {
-  console.log(data);
   const events = localStorage.getItem(LOCAL_KEY);
   const parseEvent = JSON.parse(events);
-  console.log(events);
-  console.log(parseEvent);
 
   if (parseEvent) {
     const x = [...parseEvent, data];
+
     localStorage.setItem(LOCAL_KEY, JSON.stringify(x));
   }
 
-  if (!!events) {
+  if (!parseEvent) {
     const newEvent = [];
     newEvent.push(data);
     localStorage.setItem(LOCAL_KEY, JSON.stringify(newEvent));
