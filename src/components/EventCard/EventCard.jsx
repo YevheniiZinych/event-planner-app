@@ -35,7 +35,14 @@ export const EventCard = ({ events }) => {
             return (
               <EventItem key={id}>
                 <ImageWrap>
-                  <ImgEvent loading="lazy" src={img} alt="Event photo" />
+                  <ImgEvent
+                    loading="lazy"
+                    src={
+                      img ||
+                      "https://www.crucial.com.au/blog/wp-content/uploads/2014/12/events_medium.jpg"
+                    }
+                    alt="Event photo"
+                  />
                   <CategoryWrap>
                     <Category>{category}</Category>
                     <Priority color={priorityColor(priority)}>

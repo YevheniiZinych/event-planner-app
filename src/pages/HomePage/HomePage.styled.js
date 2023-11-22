@@ -2,12 +2,18 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 320px;
-  height: 100vh;
+  height: 100dvh;
 
   margin: 0 auto;
 
   overflow: hidden;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
     width: 768px;
@@ -25,15 +31,23 @@ export const FilterWrap = styled.div`
   display: flex;
   gap: 20px;
 
-  width: 320px;
-
   margin-top: 200px;
-  margin-left: 60px;
+  margin-left: 85px;
   margin-bottom: 40px;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
     gap: 24px;
+
     margin-bottom: 24px;
+    margin-left: 215px;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.desk}) {
+    gap: 24px;
+
+    margin-top: 150px;
+    margin-bottom: 24px;
+    margin-left: 700px;
   }
 `;
 
