@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { ThemeProvider } from "@mui/material";
-import dayjs from "dayjs";
+import { v4 as uuidv4 } from "uuid";
 import {
   Form,
   LabelDescr,
@@ -15,12 +13,13 @@ import {
   LabelTime,
   LabelImage,
 } from "./AddEventForm.styled";
-import { Calendar, Time } from "./AddEventForm.mui.style";
 import { UploadPicture } from "../UploadPicture/UploadPicture";
 import { createEvent, updateEvent } from "../../fakeAPI";
 import sprite from "../../img/sprite.svg";
 import { theme } from "../../utils/themeMUI";
-import minTwoDigits from "../../helpers/minTwoDigits";
+import defaultPic from "../../img/default-pic.jpg";
+import { GetTime } from "../GetTime/GetTime";
+import { Date } from "../Date/Date";
 
 export const AddEventForm = ({ event, id }) => {
   const [updateId, setUpdateId] = useState();
@@ -112,7 +111,7 @@ export const AddEventForm = ({ event, id }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const id = new Date().getTime();
+    const id = uuidv4();
 
     const data = {
       id: updateId.toString() || id.toString(),
@@ -120,13 +119,11 @@ export const AddEventForm = ({ event, id }) => {
       description,
       priority,
       category,
-      img: eventPhoto,
+      img: eventPhoto || defaultPic,
       plays: loc,
       time,
       date,
     };
-
-    console.log(data);
 
     if (event?.length > 0) {
       updateEvent(updateId, data);
@@ -138,34 +135,6 @@ export const AddEventForm = ({ event, id }) => {
     createEvent(data);
 
     clearForm();
-  };
-
-  const getDate = (e) => {
-    const date = new Date(e);
-    const month = minTwoDigits(date.getMonth());
-    const day = minTwoDigits(date.getDay());
-
-    const eventDay = `${day}.${month}`;
-
-    setDate(eventDay);
-  };
-
-  const getTime = (e) => {
-    const time = new Date(e);
-    const hours = minTwoDigits(time.getHours());
-    const minutes = minTwoDigits(time.getMinutes());
-
-    let partOfDay;
-
-    if (hours >= 12 && hours <= 23) {
-      partOfDay = "pm";
-    } else {
-      partOfDay = "am";
-    }
-
-    const newTime = hours + ":" + minutes + " " + partOfDay;
-
-    setTime(newTime);
   };
 
   return (
@@ -200,18 +169,11 @@ export const AddEventForm = ({ event, id }) => {
         </LabelDescr>
         <LabelDate>
           <span>Select date</span>
-          <DemoContainer components={["DatePicker"]}>
-            <Calendar
-              value={dayjs(event ? event.date : date)}
-              onChange={getDate}
-            />
-          </DemoContainer>
+          <Date event={event} setDate={setDate} />
         </LabelDate>
         <LabelTime>
           <span>Select time</span>
-          <DemoContainer components={["DesktopTimePicker"]}>
-            <Time value={event ? event.time : time} onChange={getTime} />
-          </DemoContainer>
+          <GetTime event={event} setTime={setTime} />
         </LabelTime>
         <LabelLocation className="location">
           <span>Location</span>
@@ -270,7 +232,8 @@ export const AddEventForm = ({ event, id }) => {
         </LabelPriority>
 
         <AddBtn type="submit">
-          <NavLink to={"/"}>Add event</NavLink>
+          Add event
+          {/* <NavLink to={"/"}>Add event</NavLink> */}
         </AddBtn>
       </ThemeProvider>
     </Form>

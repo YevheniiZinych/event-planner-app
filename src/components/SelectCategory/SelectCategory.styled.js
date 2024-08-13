@@ -8,10 +8,11 @@ export const SelectBtn = styled.button`
   position: relative;
   display: flex;
   align-items: center;
-  gap: 5px;
 
-  width: ${({ open }) => (open ? "155px" : "56px")};
-  float: left;
+  width: 155px;
+
+  width: ${({ open }) => (open ? "165px" : "56px")};
+  float: right;
 
   height: 56px;
   padding: 16px;
@@ -24,7 +25,7 @@ export const SelectBtn = styled.button`
 
   cursor: pointer;
 
-  @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tab}) {
     position: relative;
     width: 143px;
     padding: 10px;
@@ -67,26 +68,22 @@ export const SelectList = styled.ul`
   top: 60px;
   left: 0;
 
-  display: ${({ open }) => (open ? "block" : "none")};
-
+  height: ${({ open }) => (open ? "130%" : "0px")};
   width: 100%;
+  overflow: hidden;
 
   background-color: #fff;
   box-shadow: 0px 4px 10px 0px #00000040;
   border-radius: 8px;
 
-  vertical-align: top;
-  animation-name: "anim";
   transition: ${({ theme }) => theme.transitions.main};
-
-  z-index: 100;
 
   li {
     &:not(:last-child) {
       border-bottom: 1px solid ${({ theme }) => theme.color.selectMainColor};
     }
 
-    padding: 9px 0 8px 0px;
+    padding: 10px;
 
     color: ${({ theme }) => theme.color.selectMainColor};
 
@@ -102,15 +99,13 @@ export const SelectList = styled.ul`
 export const ClearBtn = styled.span`
   position: absolute;
   display: ${({ open }) => (open ? "flex" : "none")};
-  right: 0;
+  right: 10px;
   top: 19px;
   align-items: center;
 
   color: ${({ theme }) => theme.color.main};
 
   cursor: pointer;
-
-  z-index: 1;
 
   svg {
     height: 20px;

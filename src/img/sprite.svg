@@ -4,7 +4,7 @@
 <path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M16.889 1.778v28.444M2.667 16h28.444"></path>
 </symbol>
 <symbol id="arrow-lng"  viewBox="0 0 55 32">
-<path fill="none" stroke="#7b61ff" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6.8571" d="M4.571 4.571l22.857 22.857 22.857-22.857"></path>
+<path fill="none" stroke='#3F3F3F'  stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6.8571" d="M4.571 4.571l22.857 22.857 22.857-22.857"></path>
 </symbol>
 <symbol id="category-icon" fill="none" viewBox="0 0 30 32" >
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.5263" d="M1.684 1.684l8.421 13.474v10.105l10.105 5.053v-15.158l8.421-13.474h-26.947z"></path>

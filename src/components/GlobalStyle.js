@@ -52,4 +52,15 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
 
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+
+  input {
+  border: none;
+  outline: none;
+  }
+
 `;

@@ -13,17 +13,13 @@ export const SelectCategory = ({
   setSelectedCategory,
   selectedCategory,
   isOpen,
-  setIsOpen,
+  setIsCategoryOpen,
 }) => {
   const [isSelected, setIsSelected] = useState(false);
 
-  useEffect(() => {
-    if (isOpen) setSelectedCategory("Categories");
-  }, [categories, isOpen, setSelectedCategory]);
-
-  const openSelect = () => {
-    setIsOpen((prev) => !prev);
-  };
+  // useEffect(() => {
+  //   if (isOpen) setSelectedCategory("Categories");
+  // }, [categories, isOpen, setSelectedCategory]);
 
   const handleClick = (e) => {
     setSelectedCategory(e.target.dataset.id);
@@ -32,27 +28,29 @@ export const SelectCategory = ({
 
   const onClearCategory = () => {
     setSelectedCategory("Categories");
-    setIsOpen(false);
+    setIsCategoryOpen(false);
     setIsSelected(false);
   };
 
   return (
     <Container>
-      <SelectBtn
-        onClick={openSelect}
-        open={isOpen}
-        category={selectedCategory}
-        selected={isSelected}
-      >
-        <div>
-          <svg width="24px" height="24px">
-            <use href={sprite + "#category-icon"} />
-          </svg>
-        </div>
+      <div>
+        <SelectBtn
+          onClick={() => setIsCategoryOpen((prev) => !prev)}
+          open={isOpen}
+          category={selectedCategory}
+          selected={isSelected}
+        >
+          <div>
+            <svg width="24px" height="24px">
+              <use href={sprite + "#category-icon"} />
+            </svg>
+          </div>
 
-        <div>
-          <span>{selectedCategory}</span>
-        </div>
+          <div>
+            <span>{selectedCategory || `Categories`}</span>
+          </div>
+        </SelectBtn>
         <SelectList open={isOpen} onClick={handleClick}>
           {categories.length > 0 &&
             categories.map((item) => {
@@ -63,7 +61,7 @@ export const SelectCategory = ({
               );
             })}
         </SelectList>
-      </SelectBtn>
+      </div>
 
       <ClearBtn onClick={onClearCategory} open={isOpen} selected={isSelected}>
         <AiOutlineCloseCircle />

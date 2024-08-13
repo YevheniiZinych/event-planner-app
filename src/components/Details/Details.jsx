@@ -15,9 +15,14 @@ import {
   EditBth,
   BtnWrap,
 } from "./Details.styled";
+import { deleteEvent } from "../../fakeAPI";
 
 export const Details = ({ event, location }) => {
   const { id, description, priority, category, img, plays, date, time } = event;
+
+  const onDelete = (id) => {
+    deleteEvent(id);
+  };
 
   return (
     <Card>
@@ -44,7 +49,9 @@ export const Details = ({ event, location }) => {
         </NavLink>
 
         <NavLink to={"/"}>
-          <DeleteBth type="button">Delete</DeleteBth>
+          <DeleteBth type="button" onClick={() => onDelete(id)}>
+            Delete
+          </DeleteBth>
         </NavLink>
       </BtnWrap>
     </Card>

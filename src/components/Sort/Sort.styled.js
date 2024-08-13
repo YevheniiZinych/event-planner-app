@@ -1,23 +1,26 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: relative;
+  /* position: relative; */
+`;
+
+export const SortBtnWrapp = styled.div`
+  /* position: relative; */
 `;
 
 export const SortBtn = styled.button`
-  position: ${({ open }) => (open ? "absolute" : "none")};
-
-  right: 0;
-
+  position: ${({ open }) => (open ? "absolute" : "static")};
   display: flex;
   align-items: center;
-
-  background-color: #fff;
+  justify-content: space-between;
 
   padding: 16px;
+
   width: ${({ open }) => (open ? "158px" : "56px")};
   height: 56px;
 
+  transform: ${({ open }) => (open ? "translateX(-50%)" : "translateX(0)")};
+  transform-origin: center center;
   border: none;
   box-shadow: 2px 4px 9px 0px #a68dae47;
   border-radius: 8px;
@@ -26,18 +29,11 @@ export const SortBtn = styled.button`
 
   cursor: pointer;
 
+  background-color: #fff;
+
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
     width: 129px;
     position: relative;
-  }
-
-  svg {
-    position: absolute;
-    top: 15px;
-    right: ${({ open }) => (open ? "20px" : "15px")};
-    stroke: ${({ open }) => (open ? "#7B61FF" : "#3f3f3f")};
-    width: 24px;
-    height: 24px;
   }
 
   span {
@@ -54,6 +50,12 @@ export const SortBtn = styled.button`
       margin-right: 20px;
     }
   }
+`;
+
+export const SortIcon = styled.svg`
+  stroke: ${({ open }) => (open ? "#7B61FF" : "#3f3f3f")};
+  width: 24px;
+  height: 24px;
 `;
 
 export const SortList = styled.ul`

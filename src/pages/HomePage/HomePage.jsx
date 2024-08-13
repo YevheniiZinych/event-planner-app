@@ -13,7 +13,7 @@ const HomePage = () => {
   const [categories, setCategories] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSort, setSelectedSort] = useState("Sort by");
-  const [filteredItem, setFilteredItem] = useState([]);
+  const [filteredItem, setFilteredItem] = useState(events);
 
   useEffect(() => {
     if (isFilterOpen) setIsCategoryOpen(false);
@@ -27,21 +27,24 @@ const HomePage = () => {
     setCategories(category);
   }, []);
 
-  useEffect(() => {
-    const getFilteredEvent = () => {
-      if (selectedCategory === "" || selectedCategory === "Category") {
-        return events;
-      } else {
-        const toNormalizeValue = selectedCategory.toLowerCase();
-        return events.filter((event) =>
-          event.category.toLowerCase().includes(toNormalizeValue)
-        );
-      }
-    };
-    const event = getFilteredEvent();
+  // const getFilteredEvent = () => {}
 
-    setFilteredItem(event);
-  }, [events, selectedCategory]);
+  // useEffect(() => {
+  //   const getFilteredEvent = () => {
+  //     if (selectedCategory === "" && selectedCategory === "Category") {
+  //       console.log("hello");
+  //       return events;
+  //     } else {
+  //       const toNormalizeValue = selectedCategory.toLowerCase();
+  //       return events.filter((event) =>
+  //         event.category.toLowerCase().includes(toNormalizeValue)
+  //       );
+  //     }
+  //   };
+  //   const event = getFilteredEvent();
+
+  //   setFilteredItem(event);
+  // }, [events, selectedCategory]);
 
   return (
     <main>
@@ -50,7 +53,7 @@ const HomePage = () => {
           <FilterWrap>
             <SelectCategory
               isOpen={isCategoryOpen}
-              setIsOpen={setIsCategoryOpen}
+              setIsCategoryOpen={setIsCategoryOpen}
               categories={categories}
               setSelectedCategory={setSelectedCategory}
               selectedCategory={selectedCategory}
@@ -63,9 +66,7 @@ const HomePage = () => {
             />
             <CreateBtn />
           </FilterWrap>
-        </section>
 
-        <section>
           <Title>My events</Title>
           <EventList>
             <EventCard events={filteredItem} />

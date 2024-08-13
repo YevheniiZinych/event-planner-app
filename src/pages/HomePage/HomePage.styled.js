@@ -38,6 +38,7 @@ export const FilterWrap = styled.div`
   @media screen and (min-width: ${(props) => props.theme.breakpoints.tab}) {
     gap: 24px;
 
+    margin-top: 150px;
     margin-bottom: 24px;
     margin-left: 215px;
   }
@@ -45,7 +46,6 @@ export const FilterWrap = styled.div`
   @media screen and (min-width: ${(props) => props.theme.breakpoints.desk}) {
     gap: 24px;
 
-    margin-top: 150px;
     margin-bottom: 24px;
     margin-left: 700px;
   }

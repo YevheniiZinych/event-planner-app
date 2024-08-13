@@ -58,3 +58,13 @@ export const updateEvent = (id, data) => {
 
   localStorage.setItem(LOCAL_KEY, JSON.stringify(parseEvent));
 };
+
+export const deleteEvent = (id) => {
+  const events = localStorage.getItem(LOCAL_KEY);
+  const parseEvent = JSON.parse(events);
+  const index = parseEvent?.findIndex((el) => el.id === id);
+
+  parseEvent?.splice(index, 1);
+
+  localStorage.setItem(LOCAL_KEY, JSON.stringify(parseEvent));
+};

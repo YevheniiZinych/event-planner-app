@@ -4,7 +4,7 @@ const mainVars = {
     mobMax: "767px",
     tab: "768px",
     tabMax: "1279px",
-    desk: "1280px",
+    desk: "1440px",
   },
   fontWeights: {
     s: 400,
@@ -12,14 +12,17 @@ const mainVars = {
     l: 600,
     xl: 700,
   },
-  transitions: {
-    main: "all 250ms cubic-bezier(0.4, 0, 0.2, 1)",
-  },
+  transitions: (
+    animateValue = "all",
+    duration = "250ms",
+    cubic = "cubic-bezier(0.4, 0, 0.2, 1)"
+  ) => `${animateValue} ${duration} ${cubic}`,
 };
 
 export const mainTheme = {
   ...mainVars,
   color: {
+    black: "#3F3F3F",
     main: "#7B61FF",
     white: "#FFFFFF",
     descrColor: "#49454F",
